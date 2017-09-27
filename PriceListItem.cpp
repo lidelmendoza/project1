@@ -1,27 +1,33 @@
 #include "PriceListItem.h"
 
-PriceListItem::PriceListItem(const string &itemName, const string &code, double price, bool taxable) {
-	// TO BE COMPLETED
-}
-
+//Default constructor:initializes values
 PriceListItem::PriceListItem() {
-	// TO BE COMPLETED
-
+    _itemName = " ";
+    _code = " ";
+    _price = 0.00;
+    _taxable = 0;
+    
+}
+//Overloading constructor
+PriceListItem::PriceListItem(const string &itemName, const string &code, double price, bool taxable) {
+	_itemName = itemName;
+	_code = code;
+	_price = price;
+	_taxable = taxable;
 }
 
 string PriceListItem::getItemName() {
-	// TO BE COMPLETED
+	return _itemName;
 }
 
 string PriceListItem::getCode() {
-	// TO BE COMPLETED
+	return _code;
 }
 
 double PriceListItem::getPrice() {
-	// TO BE COMPLETED
+	return _price;
 }
 
 bool PriceListItem::isTaxable() {
-	// TO BE COMPLETED
+    return _taxable;
 }
-
