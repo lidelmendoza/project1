@@ -1,20 +1,22 @@
 #pragma once
 #include <string>
+#include <stdexcept>
+#include "PriceListItem.h"
 
 using namespace std;
 
-class PriceListItem {
+class PriceList {
 public:
-	PriceListItem();
-	PriceListItem(const string &itemName, const string &code, double price, bool taxable);
-	string getItemName();
-	string getCode();
-	double getPrice();
-	bool isTaxable();
+    PriceList();
+    PriceList(const PriceList &pl);
+    PriceList& operator=(const PriceList& pl);
+	void createPriceListFromDatafile(string filename);//reads text file
+	void addEntry(string itemName, string code, double price, bool taxable);// stores data from text file into program
+    void doubleArray();
+	bool isValid(string code) const;
+	PriceListItem getItem(string code) const;
+     ~PriceList(){delete[] aptr;} //Delete the ptr
 private:
-    string _itemName;
-    string _code;
-	double _price;
-	bool _taxable;
-
+    int index, size;
+	PriceListItem *aptr;
 };
