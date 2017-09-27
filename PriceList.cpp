@@ -86,7 +86,9 @@ PriceListItem PriceList::getItem(string code) const {
 // doubles array and copies the items into new array
 void PriceList:: doubleArray(){
     size *= 2;
-    size = (size > 1000000 ? 1000000 : size);
+    if(size>1000000)
+        size = 1000000;
+  
     PriceListItem *tmp = new PriceListItem[size];
     for (int i = 0; i < index; i++){
         tmp[i] = aptr[i];
