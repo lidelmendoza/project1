@@ -7,7 +7,7 @@ using namespace std;
 //Overloading constructor
 GroceryBill::GroceryBill(const PriceList *priceList, double taxRate) {
 	index = 0;
-	size = 20;
+	size = 1000;
 	bill = new GroceryListItem[size];
 	_taxRate = taxRate / 100;
 	lookup = *priceList;
@@ -87,14 +87,3 @@ void GroceryBill::printBill() {
 	cout << "TOTAL     " << getTotal() << endl;
 }
 
-//doubles array and copies the items into new array
-void GroceryBill:: doubleArray(){
-    size *= 2;
-    size = (size > 1000 ? 1000 : size); //If its greater than a million set it to a max of a million
-    GroceryListItem *tmp = new GroceryListItem[size]; //Create new list with double size
-    for (int i = 0; i < index; i++){
-        tmp[i] = bill[i]; //Copy from old list to new list
-    }
-    delete[] bill; //Delete old list
-    bill = tmp;
-}
